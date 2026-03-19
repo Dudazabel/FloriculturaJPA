@@ -25,6 +25,21 @@ public class ServicosController {
         return service.buscarServicosPorID(id);
     }
 
+    @GetMapping("/{id}/{nome}")
+    public ServicosRespostaDTO buscarServicosPorIDENome(@PathVariable Long id, @PathVariable String nome){
+        return service.buscarServicosPorIdENome(id, nome);
+    }
+
+    @GetMapping("/{nome}")
+    public ServicosRespostaDTO buscarServicosPorNome(@PathVariable String nome){
+        return service.buscarServicosPorNome(nome);
+    }
+
+    @GetMapping("/{valor}")
+    public ServicosRespostaDTO buscarServicosPorValor(@PathVariable double valor){
+        return service.buscarServicosPorValor(valor);
+    }
+
     @GetMapping
     public List<ServicosRespostaDTO> listarServicos(){
         return service.listarServicos();
