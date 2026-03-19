@@ -27,6 +27,31 @@ public class FloresService {
                 .orElseThrow(() -> new RuntimeException("Não foi possível encontrar a flor pelo ID indicado!")));
     }
 
+    public FloresRespostaDTO buscarFloresPorIdENome(Long id, String nome){
+        return mapper.EntidadeParaDTO(repository.findByIdAndNome(id, nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar a flor pelo ID e nome indicado!")));
+    }
+
+    public FloresRespostaDTO buscarFloresPorNome(String nome){
+        return mapper.EntidadeParaDTO(repository.findByNome(nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar a flor pelo nome indicado!")));
+    }
+
+    public FloresRespostaDTO buscarFloresPorNomeECor(String nome, String cor){
+        return mapper.EntidadeParaDTO(repository.findByNomeAndCor(nome, cor)
+                .orElseThrow(() ->  new RuntimeException("Não foi possível encontrar a flor pelo nome e pela cor indicados!")));
+    }
+
+    public FloresRespostaDTO bucarFloresPelaCor(String cor){
+        return mapper.EntidadeParaDTO(repository.findByCor(cor)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar a flor pela cor indicada!")));
+    }
+
+    public FloresRespostaDTO buscarFloresPorValor(double valor){
+        return mapper.EntidadeParaDTO(repository.findByValor(valor)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar a flor pelo valor indicado!")));
+    }
+
     public List<FloresRespostaDTO> listarrFlores(){
         return mapper.EntidadeParaDTOList(repository.findAll());
     }
