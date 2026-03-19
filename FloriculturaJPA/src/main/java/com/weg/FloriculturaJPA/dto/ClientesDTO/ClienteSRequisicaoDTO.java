@@ -1,5 +1,8 @@
 package com.weg.FloriculturaJPA.dto.ClientesDTO;
 
-public record ClienteSRequisicaoDTO(String nome,
+import jakarta.validation.constraints.NotBlank;
+public record ClienteSRequisicaoDTO(@NotBlank
+                                    String nome,
+                                    @NotBlank
                                     String telefone) {
 }

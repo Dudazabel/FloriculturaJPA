@@ -3,7 +3,6 @@ package com.weg.FloriculturaJPA.mapper;
 import com.weg.FloriculturaJPA.dto.FornecedoresDTO.FornecedoresRequisicaoDTO;
 import com.weg.FloriculturaJPA.dto.FornecedoresDTO.FornecedoresRespostaDTO;
 import com.weg.FloriculturaJPA.model.Fornecedores;
-import com.weg.FloriculturaJPA.repository.FornecedoresRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

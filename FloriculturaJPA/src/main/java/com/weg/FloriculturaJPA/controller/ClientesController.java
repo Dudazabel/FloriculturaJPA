@@ -4,7 +4,6 @@ import com.weg.FloriculturaJPA.dto.ClientesDTO.ClienteSRequisicaoDTO;
 import com.weg.FloriculturaJPA.dto.ClientesDTO.ClientesRespostaDTO;
 import com.weg.FloriculturaJPA.service.ClientesService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

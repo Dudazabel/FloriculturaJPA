@@ -1,8 +1,18 @@
 package com.weg.FloriculturaJPA.dto.TrabalhadoresDTO;
 
-public record TrabalhadoresRespostaDTO(Long id,
+import jakarta.validation.constraints.*;
+
+public record TrabalhadoresRespostaDTO(@NotNull
+                                       @Positive
+                                       Long id,
+                                       @NotBlank
                                        String nome,
+                                       @NotBlank
                                        String cargo,
+                                       @NotBlank
+                                       @Email
                                        String email,
+                                       @NotNull
+                                       @PositiveOrZero
                                        double salario) {
 }

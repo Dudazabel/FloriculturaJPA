@@ -1,6 +1,14 @@
 package com.weg.FloriculturaJPA.dto.ClientesDTO;
 
-public record ClientesRespostaDTO(Long id,
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+public record ClientesRespostaDTO(@NotNull
+                                  @Positive
+                                  Long id,
+                                  @NotBlank
                                   String nome,
+                                  @NotBlank
                                   String telefone) {
 }
