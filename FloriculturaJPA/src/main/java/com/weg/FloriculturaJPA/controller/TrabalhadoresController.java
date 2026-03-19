@@ -25,6 +25,36 @@ public class TrabalhadoresController {
         return service.buscarTrabalhadoresPorID(id);
     }
 
+    @GetMapping("/{id}/{nome}")
+    public TrabalhadoresRespostaDTO procurarTrabalhadoresPorIdENome(@PathVariable Long id, @PathVariable String nome){
+        return service.buscarTrabalhadoresPorIdENome(id, nome);
+    }
+
+    @GetMapping("/{nome}")
+    public TrabalhadoresRespostaDTO procurarTrabalhadoresPorNome(@PathVariable String nome){
+        return service.buscarTrabalhadoresPorNome(nome);
+    }
+
+    @GetMapping("/{nome}/{cargo}")
+    public TrabalhadoresRespostaDTO procurarTrabalhadoresPorNomeECargo(@PathVariable String nome, @PathVariable String cargo){
+        return service.buscarTrabalhadoresPorNomeECargo(nome, cargo);
+    }
+
+    @GetMapping("/{cargo}")
+    public TrabalhadoresRespostaDTO procurarTrabalhadoresPorCargo(@PathVariable String cargo){
+        return service.buscarTrabalhadoresPorCargo(cargo);
+    }
+
+    @GetMapping("/{email}")
+    public TrabalhadoresRespostaDTO procurarTrabalhadoresPorEmail(@PathVariable String email){
+        return service.buscarTrabalhadoresPorEmail(email);
+    }
+
+    @GetMapping("/{salario}")
+    public TrabalhadoresRespostaDTO procurarTrabalhadoresPorSalario(@PathVariable double salario){
+        return service.buscarTrabalhadoresPorSalario(salario);
+    }
+
     @GetMapping
     public List<TrabalhadoresRespostaDTO> listarTrabalhadores(){
         return service.listarTrabalhadores();

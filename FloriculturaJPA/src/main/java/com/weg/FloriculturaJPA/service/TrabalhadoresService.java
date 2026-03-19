@@ -27,6 +27,36 @@ public class TrabalhadoresService {
                 .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o trabalhador pelo ID indicado!")));
     }
 
+    public TrabalhadoresRespostaDTO buscarTrabalhadoresPorIdENome(Long id, String nome){
+        return mapper.EntidadeParaDTO(repository.findByIdAndNome(id, nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o trabalhador pelo ID e nome indicados!")));
+    }
+
+    public TrabalhadoresRespostaDTO buscarTrabalhadoresPorNome(String nome){
+        return mapper.EntidadeParaDTO(repository.findByNome(nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o trabalhador pelo nome indicado!")));
+    }
+
+    public TrabalhadoresRespostaDTO buscarTrabalhadoresPorNomeECargo(String cargo, String nome){
+        return mapper.EntidadeParaDTO(repository.findByNomeAndCargo(nome, cargo)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o trabalhador pelo nome e cargo indicados!")));
+    }
+
+    public TrabalhadoresRespostaDTO buscarTrabalhadoresPorCargo(String cargo){
+        return mapper.EntidadeParaDTO(repository.findByCargo(cargo)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o trabalhador pelo cargo indicado!")));
+    }
+
+    public TrabalhadoresRespostaDTO buscarTrabalhadoresPorEmail(String email){
+        return mapper.EntidadeParaDTO(repository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o trabalhador pelo email indicado!")));
+    }
+
+    public TrabalhadoresRespostaDTO buscarTrabalhadoresPorSalario(double salario){
+        return mapper.EntidadeParaDTO(repository.findBySalario(salario)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o trabalhador pelo salario indicado!")));
+    }
+
     public List<TrabalhadoresRespostaDTO> listarTrabalhadores(){
         return mapper.EntidadeParaDTOList(repository.findAll());
     }
