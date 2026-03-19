@@ -27,6 +27,26 @@ public class FornecedoresService {
                 .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o fornecedor pelo ID indicado!")));
     }
 
+    public FornecedoresRespostaDTO buscarFornecedoresPorIdENome(Long id, String nome){
+        return mapper.EntidadeParaDTO(repository.findByIdAndNome(id, nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o fornecedor pelo ID e nome indicados!")));
+    }
+
+    public FornecedoresRespostaDTO buscarFornecedoresPorNome(String nome){
+        return mapper.EntidadeParaDTO(repository.findByNome(nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o fornecedor pelo nome indicado!")));
+    }
+
+    public FornecedoresRespostaDTO buscarFornecedoresPorMaterial(String material){
+        return mapper.EntidadeParaDTO(repository.findByMaterial(material)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o fornecedor pelo material indicado!")));
+    }
+
+    public FornecedoresRespostaDTO buscarFornecedoresPorNomeEMaterial(String nome, String material){
+        return mapper.EntidadeParaDTO(repository.findByNomeAndMaterial(nome, material)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o fornecedor pelo nome e material indicados!")));
+    }
+
     public List<FornecedoresRespostaDTO> listarFornecedores(){
         return mapper.EntidadeParaDTOList(repository.findAll());
     }
