@@ -18,6 +18,9 @@ public class ClientesService {
     private final ClientesMapper mapper;
 
     public ClientesRespostaDTO adicionarClientes(ClienteSRequisicaoDTO cliente){
+        if(repository.ExistsByTelefone(cliente.telefone())){
+            throw new RuntimeException("O telefone já está cadastrado!");
+        }
         Clientes clienteSalvo = mapper.DTOParaEntidade(cliente);
         return mapper.EntidadeParaDTO(repository.save(clienteSalvo));
     }
@@ -25,6 +28,16 @@ public class ClientesService {
     public ClientesRespostaDTO buscarClientesPorID(Long id){
         return mapper.EntidadeParaDTO(repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o cliente pelo ID indicado!")));
+    }
+
+    public ClientesRespostaDTO buscarClientesPorIdENome(Long id, String nome){
+        return mapper.EntidadeParaDTO(repository.findByIdAndNome(id, nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o cliente pelo ID e nome indicados!")));
+    }
+
+    public ClientesRespostaDTO buscarClientesPorNome(String nome){
+        return mapper.EntidadeParaDTO(repository.findByNome(nome)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o cliente pelo nome indicado!")));
     }
 
     public List<ClientesRespostaDTO> listarClientes(){

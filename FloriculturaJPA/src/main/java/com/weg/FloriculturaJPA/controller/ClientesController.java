@@ -25,6 +25,16 @@ public class ClientesController {
         return service.buscarClientesPorID(id);
     }
 
+    @GetMapping("/{id}/{nome}")
+    public ClientesRespostaDTO buscarClientesPorIdENome(@PathVariable Long id, @PathVariable String nome){
+        return service.buscarClientesPorIdENome(id, nome);
+    }
+
+    @GetMapping("/{nome}")
+    public ClientesRespostaDTO buscarClientesPorNome(@PathVariable String nome){
+        return service.buscarClientesPorNome(nome);
+    }
+
     @GetMapping
     public List<ClientesRespostaDTO> listarClientes(){
         return service.listarClientes();
